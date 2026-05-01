@@ -15,6 +15,6 @@ a simple CLI tool to record and reference deposits and payments
 * must have a keyboard and CLI
 
 ### screenshots
-![Screenshot 2026-05-01 080604.png](../../../../Pictures/Screenshots/Screenshot%202026-05-01%20080604.png)
-![Screenshot 2026-05-01 080613.png](../../../../Pictures/Screenshots/Screenshot%202026-05-01%20080613.png)
-![Screenshot 2026-05-01 080628.png](../../../../Pictures/Screenshots/Screenshot%202026-05-01%20080628.png)
+![Screenshot 2026-05-01 080604.png](images/Screenshot%202026-05-01%20080604.png)
+![Screenshot 2026-05-01 080613.png](images/Screenshot%202026-05-01%20080613.png)
+![Screenshot 2026-05-01 080628.png](images/Screenshot%202026-05-01%20080628.png)
