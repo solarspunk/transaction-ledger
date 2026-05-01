@@ -15,11 +15,11 @@ public class ReportScreen {
         this.scanner = scanner;
     }
 
-    public void start() {
+    public boolean start() {
 
-        boolean running = true;
+        boolean isRunning = true;
 
-        while (running) {
+        while (isRunning) {
             System.out.println("\n|--------* Report Screen *--------|");
             System.out.println("1) Month To Date");
             System.out.println("2) Previous Month");
@@ -27,9 +27,9 @@ public class ReportScreen {
             System.out.println("4) Previous Year");
             System.out.println("5) Search by Vendor");
             System.out.println("0) Back to Ledger");
-            System.out.println("H) Home");
+            System.out.println("X) Exit");
 
-            String input = scanner.nextLine();
+            String input = scanner.nextLine().toUpperCase();
 
             switch (input) {
                 case "1" -> show(service.getMonthToDate());
@@ -41,10 +41,13 @@ public class ReportScreen {
                     String v = scanner.nextLine();
                     show(service.searchByVendor(v));
                 }
-                case "0" -> running = false;
-                case "H" -> System.exit(0);
+                case "0" -> isRunning = false;
+                case "X" -> {
+                    return false;
+                }
             }
         }
+        return true;//default
     }
 
     private void show(java.util.List<Transaction> list) {

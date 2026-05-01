@@ -1,13 +1,12 @@
 package com.michael.transactionledger.service;
 
-
 import com.michael.transactionledger.model.Transaction;
 import com.michael.transactionledger.repository.Repository;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.stream.Collectors;
+
 
 //filtering (month, vendor, etc.)
 public class Service {

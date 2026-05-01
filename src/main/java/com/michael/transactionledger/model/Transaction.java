@@ -2,7 +2,7 @@ package com.michael.transactionledger.model;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
+
 
 //holds the data fields
 public class Transaction {
@@ -81,8 +81,8 @@ public class Transaction {
     public String toString() {
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
-        return String.format("%s %s %-15s %-15s %10.2f",
-                date, time.format(timeFormatter), description + ",", vendor + ",", amount);
+        return String.format("%s %s %-30s %-34s %16.2f",
+                date, time.format(timeFormatter), "| " + description + ",", vendor + ",", amount);
     }
 
     //check if deposit happens

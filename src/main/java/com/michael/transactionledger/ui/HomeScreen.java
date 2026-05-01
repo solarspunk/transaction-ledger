@@ -18,7 +18,7 @@ public class HomeScreen {
         this.service = service;
     }
 
-    public void start() {
+    public boolean start() {
 
 boolean isRunning = true;
         while (isRunning) {
@@ -34,11 +34,15 @@ boolean isRunning = true;
             switch (userInput) {
                 case "D" -> addTransaction(true);
                 case "P" -> addTransaction(false);
-                case "L" -> new LedgerScreen(service, scanner).start();
+                case "L" -> {
+                    boolean goBackHome = new LedgerScreen(service, scanner).start();
+                    if (!goBackHome) return false;
+                }
                 case "X" -> isRunning = false;
-                default  -> System.out.println("Invalid option, try again.");
+                default  -> System.out.println("Invalid option, please try again");
             }
         }
+        return true;
     }
 
 
@@ -90,8 +94,9 @@ boolean isRunning = true;
                     System.out.println("Invalid time format. Please try again using hour:min AM/PM (e.g. 4:04 AM).");
                 }
             }
-        } else System.out.println("Please either press enter or \"O\" as in orangutan...");
-
+        } else if (!overwriteDateTime.isEmpty()) {
+            System.out.println("Please either press enter or \"O\" as in orangutan...");
+        }
         Transaction transaction = new Transaction(date, time, description, vendor, amount);
         service.save(transaction);
 

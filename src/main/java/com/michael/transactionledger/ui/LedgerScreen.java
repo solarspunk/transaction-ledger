@@ -14,7 +14,7 @@ public class LedgerScreen {
         this.scanner = scanner;
     }
 
-    public void start() {
+    public boolean start() {
 
 
         boolean isRunning = true;
@@ -34,15 +34,26 @@ public class LedgerScreen {
                 case "A" -> show(service.returnAll());
                 case "D" -> show(service.getDeposits());
                 case "P" -> show(service.getPayments());
-                case "R" -> new ReportScreen(service, scanner).start();
-                case "H" -> isRunning = false;
+                case "R" -> {
+                    boolean inLedgerScreen = new ReportScreen(service, scanner).start();
+                    if (!inLedgerScreen) return false;
+                }
+                case "H" -> {
+                    return true;
+                }
                 default -> System.out.println("Invalid option.");
             }
         }
+        return isRunning;
     }
 
     private void show(ArrayList<Transaction> list) {
-        for (Transaction t : list) {
+        if (list == null || list.isEmpty()) {
+            System.out.println("No entries found");
+            return;
+        }
+
+        for (Transaction t: list) {
             System.out.println(t);
         }
     }
